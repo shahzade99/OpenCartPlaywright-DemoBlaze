@@ -28,36 +28,37 @@ export class demoblazeLoginPage{
 
 
     // Navigate to the url
-    async navigateToURL()
-    {
-        await this.page.goto("https://demoblaze.com/index.html");
-    }
+        async navigateToURL()
+        {
+            await this.page.goto("https://demoblaze.com/index.html");
+        }
 
     // login credentials
-    async performLoginAction(uname:string,pass:string)
-    {
-        await this.loginOption.click();
-        await this.username.fill(uname);
-        await this.password.fill(pass);
+        async performLoginAction(uname:string,pass:string)
+        {
+            await this.loginOption.click();
+            await this.username.fill(uname);
+            await this.password.fill(pass);
 
-        let dialogMessage: string | undefined;
-        const dialogHandler = async (dialog: Dialog) => {
-            dialogMessage = dialog.message();
-            await dialog.accept();
-        };
+            let dialogMessage: string | undefined;
+            const dialogHandler = async (dialog: Dialog) => {
+                dialogMessage = dialog.message();
+                await dialog.accept();
+            };
 
-        this.page.on('dialog', dialogHandler);
-        try {
-            await this.submitBtn.click();
-        } finally {
-            this.page.off('dialog', dialogHandler);
+            this.page.on('dialog', dialogHandler);
+            try {
+                await this.submitBtn.click();
+            } finally {
+                this.page.off('dialog', dialogHandler);
+            }
+
+            if (dialogMessage !== undefined) {
+                throw new Error(`Login failed: ${dialogMessage}`);
+            }
+
+            await this.logoutOption.waitFor({ state: 'visible' });
         }
-
-        if (dialogMessage !== undefined) {
-            throw new Error(`Login failed: ${dialogMessage}`);
-        }
-
-        await this.logoutOption.waitFor({ state: 'visible' });
-    }
 }
 
+// move login dialog handler into test.spec file and learn it
