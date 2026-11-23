@@ -1,5 +1,6 @@
 import {Page,Locator} from "@playwright/test";
 
+
 export class demoBlazeCart{
 
     // page fixture property declaration
@@ -16,24 +17,29 @@ export class demoBlazeCart{
     {
         this.page = page;
         this.cart = page.getByRole("link",{name:'Cart', exact:true});
-        this.cartProductList = page.locator('//tbody[@id="tbodyid"]/tr/td[2]');
+        this.cartProductList = page.locator('#tbodyid tr td:nth-child(2)');
     }
 
 
-// Navigate the product
-    async viewCartProduct(productName:string)
+// Navigate to the cart
+    async viewCartProduct()
     {
         await this.cart.waitFor({state:'visible'});
         await this.cart.click()
+    }
+    
+    
+// View total product in the list
+    async TotalCartProduct(productName:string)
+    {
+        await this.cartProductList.first().waitFor({state:'visible'});
         const productCount = await this.cartProductList.count();
-        console.log("product count",productCount);
 
         for (let index = 0; index < productCount; index++)
         {
             const productLink = this.cartProductList.nth(index);
             if ((await productLink.innerText()).trim() === productName.trim())
             {
-                console.log("product matched is", productLink);
                 return;
                 
             }

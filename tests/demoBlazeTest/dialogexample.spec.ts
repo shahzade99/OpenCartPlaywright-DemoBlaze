@@ -22,8 +22,9 @@ test("Dialog pop up on login", async ({page}) => {
 
 
     })
- 
-    await test.step('3) Accept dialog handler', async () => {
+    
+
+   /** await test.step('3 Method2) Accept dialog handler', async () => {
 
         // dialog appeared on screen? yes/No
         let dialogMessage: string | undefined;
@@ -63,14 +64,24 @@ test("Dialog pop up on login", async ({page}) => {
             await page.getByRole('link', { name: 'Log out', exact: true }).waitFor({ state: 'visible' });
 
 
+    }) */
 
+    await test.step('2 Method1) Handle the dialog', async () => {
+        page.on("dialog", dialog => dialog.accept());
+        await page.getByRole('button', { name: 'Log in' }).click();
 
-            //Note:
-            /**
-             * The handler is registered before the click so it can catch the alert. 
-             * The finally block removes it afterward so it won’t handle an unrelated dialog later.
-             */
     })
+    
 
 })
+
+
+//Note for Method3:
+/**
+ * The handler is registered before the click so it can catch the alert. 
+ * The finally block removes it afterward so it won’t handle an unrelated dialog later.
+ * 
+ * 
+ */
+
 

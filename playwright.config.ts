@@ -39,6 +39,8 @@ export default defineConfig({
       Accept:"application/json",
       "content-Type": "application/json",  // updated by shahzad for post call
     },
+
+    headless:false,       // updated by Shahzad M; Want to run each test to see the UI
     
 
   },

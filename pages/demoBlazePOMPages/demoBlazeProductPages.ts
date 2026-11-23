@@ -38,36 +38,14 @@ export class demoBlazeProductPage{
             {
                 await productLink.click();
                 await this.addToCartBtn.waitFor({state:'visible'});
+                this.page.once('dialog', dialog => dialog.accept());
                 await this.addToCartBtn.click();
+                await this.page.getByRole('link', {name:'Home'}).click();
                 return;
                 
             }
         }
 
         throw new Error(`Product "${productName}" was not found in the product list.`);
-    }
-
-    async gotoCart()
-    {
-        this.page.once('dialog', dialog => dialog.accept());
-        await this.cart.click();
-                
-
-    }
-
-    async validateProductCart(productName:string)
-    {
-        const Counts = await this.numberOfProducts.count();
-
-        for (let index = 0; index < Counts; index++)
-        {
-            const productNamess = this.numberOfProducts.nth(index);
-
-            if (productName === (await productNamess.innerText()).trim())
-            {
-                console.log(productName);
-
-            }    
-        }
     }
 }    

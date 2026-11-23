@@ -1,0 +1,16 @@
+{
+    "products": [
+        {
+            "productName": "Nokia lumia 1520",
+            "expectedResult": "Nokia lumia 1520"
+        },
+        {
+            "productName": "Samsung galaxy s7",
+            "expectedResult": "Samsung galaxy s7"
+        },
+        {
+            "productName": "Samsung galaxy s6",
+            "expectedResult": "Samsung galaxy s6"
+        }
+    ]
+}

@@ -5,7 +5,7 @@ import { Register } from "../pages/RegisterPage";
 import { ProductPage } from "../pages/ProductPage";
 import { demoblazeLoginPage } from "../pages/demoBlazePOMPages/demoBlazeLoginPage";
 import { demoBlazeProductPage } from "../pages/demoBlazePOMPages/demoBlazeProductPages";
-import { demoBlazeCart } from "../pages/demoBlazeCart";
+import { demoBlazeCart } from "../pages/demoBlazePOMPages/demoBlazeCart";
 
 
 //const APP_URL = "https://www.opencart.com";

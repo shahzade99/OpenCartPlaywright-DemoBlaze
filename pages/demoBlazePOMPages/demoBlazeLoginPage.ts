@@ -58,7 +58,5 @@ export class demoblazeLoginPage{
             }
 
             await this.logoutOption.waitFor({ state: 'visible' });
-        }
+        }        
 }
-
-// move login dialog handler into test.spec file and learn it

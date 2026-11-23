@@ -13,6 +13,5 @@ test("DemoBlaze Login Process", async({demoLoginFixture}) =>
   await test.step('2) Enter credential and hit enter', async() => {
     await demoLoginFixture.performLoginAction(uemail,upassword);
   })
-
   
 })

@@ -28,10 +28,4 @@ export class Helper{
         }
     }
 
-    static productNames()
-    {
-        return{
-            productName:["Nokia lumia 1520","Samasung galaxy s7","Samsung galaxy s6"]
-        }
-    }
 }
