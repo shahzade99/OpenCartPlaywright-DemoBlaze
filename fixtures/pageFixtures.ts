@@ -6,6 +6,7 @@ import { ProductPage } from "../pages/ProductPage";
 import { demoblazeLoginPage } from "../pages/demoBlazePOMPages/demoBlazeLoginPage";
 import { demoBlazeProductPage } from "../pages/demoBlazePOMPages/demoBlazeProductPages";
 import { demoBlazeCart } from "../pages/demoBlazePOMPages/demoBlazeCart";
+import { demoBlazePayment } from "../pages/demoBlazePOMPages/demoBlazePayment";
 
 
 //const APP_URL = "https://www.opencart.com";
@@ -20,6 +21,7 @@ type pageFixtures = {
     demoLoginFixture: demoblazeLoginPage;
     demoProductFixture: demoBlazeProductPage;
     demoCartFixture:demoBlazeCart;
+    demoPaymentFixture:demoBlazePayment;
 };
 
 /**
@@ -60,6 +62,10 @@ export const test = base.extend<pageFixtures> ({
     demoCartFixture: async({page},use) =>
     {
         await use(new demoBlazeCart(page))
+    },
+    demoPaymentFixture: async({page},use) =>
+    {
+        await use(new demoBlazePayment(page))
     },
 });
 
