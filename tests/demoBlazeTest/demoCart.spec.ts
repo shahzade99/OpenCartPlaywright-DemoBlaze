@@ -4,7 +4,7 @@ import {products} from '../../testdata/productsData.json';
 
 const {uemail, upassword} = Helper.getdemoBlazeRegisterDetails();
 
-test("DemoBlaze Cart verification", async ({ demoProductFixture, demoCartFixture, demoLoginFixture }) => {
+test('DemoBlaze Cart verification @e2e', async ({ demoProductFixture, demoCartFixture, demoLoginFixture }) => {
     await test.step('1) Navigate to the url', async () => {
         await demoLoginFixture.navigateToURL();
     })
